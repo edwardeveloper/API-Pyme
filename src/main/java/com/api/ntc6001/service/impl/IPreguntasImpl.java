@@ -3,9 +3,12 @@ package com.api.ntc6001.service.impl;
 import com.api.ntc6001.dao.PreguntasDao;
 import com.api.ntc6001.model.entity.Preguntas;
 import com.api.ntc6001.service.IPreguntas;
-import jakarta.transaction.Transactional;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.util.List;
 
@@ -16,9 +19,9 @@ public class IPreguntasImpl implements IPreguntas {
     @Autowired
     private PreguntasDao preguntasDao;
 
-    public IPreguntasImpl(PreguntasDao preguntasDao) {
-        this.preguntasDao = preguntasDao;
-    }
+//    public IPreguntasImpl(PreguntasDao preguntasDao) {
+//        this.preguntasDao = preguntasDao;
+//    }
 
     @Override
     public Preguntas save(Preguntas pregunta) {

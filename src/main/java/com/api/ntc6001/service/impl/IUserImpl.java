@@ -3,9 +3,11 @@ package com.api.ntc6001.service.impl;
 import com.api.ntc6001.dao.UserDao;
 import com.api.ntc6001.model.entity.Users;
 import com.api.ntc6001.service.IUser;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+
 @Service
 @Transactional
 public class IUserImpl implements IUser {

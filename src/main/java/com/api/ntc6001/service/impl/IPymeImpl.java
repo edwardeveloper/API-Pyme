@@ -3,9 +3,10 @@ package com.api.ntc6001.service.impl;
 import com.api.ntc6001.dao.PymeDao;
 import com.api.ntc6001.model.entity.Pyme;
 import com.api.ntc6001.service.IPyme;
-import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 

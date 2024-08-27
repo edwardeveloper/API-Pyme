@@ -1,10 +1,10 @@
 package com.api.ntc6001.controller;
 
-import com.api.ntc6001.model.entity.Cuestionario;
-import com.api.ntc6001.service.impl.ICuestionarioImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import com.api.ntc6001.service.impl.ICuestionarioImpl;
 import org.springframework.web.bind.annotation.*;
+import com.api.ntc6001.model.entity.Cuestionario;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -15,9 +15,9 @@ public class CuestionarioController {
     @Autowired
     private ICuestionarioImpl icuestionario;
 
-    public CuestionarioController(ICuestionarioImpl cuestionario) {
-        this.icuestionario = cuestionario;
-    }
+//    public CuestionarioController(ICuestionarioImpl cuestionario) {
+//        this.icuestionario = cuestionario;
+//    }
 
 //    @GetMapping("/{id}")
     @GetMapping("/list")

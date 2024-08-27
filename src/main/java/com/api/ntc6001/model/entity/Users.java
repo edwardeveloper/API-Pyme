@@ -1,13 +1,15 @@
 package com.api.ntc6001.model.entity;
 
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.Id;
 
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Data
@@ -18,6 +20,7 @@ import java.io.Serializable;
 @Entity
 @Table(name = "User")
 public class Users implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="iduser")

@@ -1,10 +1,10 @@
 package com.api.ntc6001.model.dto;
 
-import jakarta.persistence.Column;
 import lombok.Data;
 
 @Data
 public class RegisterPymeDto {
+
         private String PRazonSocial;
 
         private String PDireccion;
