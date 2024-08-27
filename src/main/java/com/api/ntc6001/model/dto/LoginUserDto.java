@@ -3,7 +3,7 @@ package com.api.ntc6001.model.dto;
 import lombok.Data;
 
 @Data
-public class LoginPymeDto {
+public class LoginUserDto {
     private String email;
 
     private String password;

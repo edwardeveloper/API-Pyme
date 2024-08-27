@@ -3,7 +3,7 @@ package com.api.ntc6001.model.dto;
 import lombok.Data;
 
 @Data
-public class RegisterPymeDto {
+public class RegisterUserDto {
 
         private String PRazonSocial;
 
