@@ -50,13 +50,13 @@ public class AuthController {
 
             //3. Generar token
             String jwt = this.jwtUtilService.generateToken(userDetails);
-            String refreshToken = this.jwtUtilService.generateRefreshToken(userDetails, userModel.getURole());
+//            String refreshToken = this.jwtUtilService.generateRefreshToken(userDetails, userModel.getURole());
 
             AuthResponseDto authResponseDto = new AuthResponseDto();
             authResponseDto.setToken(jwt);
 //            authResponseDto.setRefreshToken(refreshToken);
 
-            return new ResponseEntity<AuthResponseDto>(authResponseDto, HttpStatus.OK);
+            return new ResponseEntity<>(jwt, HttpStatus.OK);
 
         }catch (Exception e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
