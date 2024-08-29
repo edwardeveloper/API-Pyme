@@ -5,7 +5,7 @@ import com.api.ntc6001.model.dto.RegisterUserDto;
 import com.api.ntc6001.model.entity.Users;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -14,23 +14,23 @@ import java.util.List;
 @Service
 public class AuthenticationService {
     private final UserDao userRepository;
-    private final PasswordEncoder passwordEncoder;
+    private final BCryptPasswordEncoder cryptPasswordEncoder;
     private final AuthenticationManager authenticationManager;
 
     public AuthenticationService(
             UserDao userRepository,
             AuthenticationManager authenticationManager,
-            PasswordEncoder passwordEncoder
+            BCryptPasswordEncoder passwordEncoder
     ) {
         this.authenticationManager = authenticationManager;
         this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
+        this.cryptPasswordEncoder = passwordEncoder;
     }
 
     public Users signup(RegisterUserDto input) {
         var user = new Users();
         user.setUCorreo(input.getPCorreo());
-        user.setUPassword(passwordEncoder.encode(input.getPPassword()));
+        user.setUPassword(cryptPasswordEncoder.encode(input.getPPassword()));
 
         return userRepository.save(user);
     }

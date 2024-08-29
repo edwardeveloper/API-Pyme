@@ -47,7 +47,7 @@ public class PymeController {
         pymeActual.setPNit(pyme.getPNit());
         pymeActual.setPTelefono(pyme.getPTelefono());
         pymeActual.setPObjetoSocial(pyme.getPObjetoSocial());
-        pymeActual.setPRazonSocial(pyme.getPRazonSocial());
+        pymeActual.setPRazonSocial(pyme.getPRazonSocial()); 
         return ResponseEntity.ok(iPyme.save(pymeActual));
     }
 
