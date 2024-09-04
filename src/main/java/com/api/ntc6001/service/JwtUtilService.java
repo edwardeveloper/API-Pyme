@@ -16,16 +16,16 @@ import java.util.Date;
 @Service
 public class JwtUtilService {
     private static final String JWT_SECRET_KEY = "TExBVkVfTVVZX1NFQ1JFVEzE3Zmxu7BSGSJx72BSBXM";
-    private static final long JWT_TIME_VALIDITY = 1000 * 60  * 15;
+    private static final long JWT_TIME_VALIDITY = (1000 * 60  * 15)*16;
     private static final long JWT_TIME_REFRESH_VALIDATE = 1000 * 60  * 60 * 24;
 
     private SecretKey getSignInKey() {
         byte[] keyBytes = Decoders.BASE64.decode(JWT_SECRET_KEY);
         return Keys.hmacShaKeyFor(keyBytes);
     }
-    public String generateToken(UserDetails userDetails, String role) {
+    public String generateToken(UserDetails userDetails, String rol) {
         var claims = new HashMap<String, Object>();
-        claims.put("role", role);
+        claims.put("rol", rol);
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(userDetails.getUsername())
@@ -45,9 +45,9 @@ public class JwtUtilService {
                 .compact();
     }
 
-    public String generateRefreshToken(UserDetails userDetails, String role) {
+    public String generateRefreshToken(UserDetails userDetails, String rol) {
         var claims = new HashMap<String, Object>();
-        claims.put("role", role);
+        claims.put("rol", rol);
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(userDetails.getUsername())

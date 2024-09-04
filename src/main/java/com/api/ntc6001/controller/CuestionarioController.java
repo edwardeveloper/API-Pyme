@@ -1,5 +1,7 @@
 package com.api.ntc6001.controller;
 
+import com.api.ntc6001.model.dto.CuestionarioInformeTotalDto;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.api.ntc6001.service.impl.ICuestionarioImpl;
 import org.springframework.web.bind.annotation.*;
@@ -8,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
+@Slf4j
 @RestController
 @RequestMapping("/cuestionario")
 public class CuestionarioController {
@@ -30,15 +33,33 @@ public class CuestionarioController {
         return ResponseEntity.ok(icuestionario.findById(id));
     }
 
+    @GetMapping("/list/{pregunta}")
+    public ResponseEntity<List<Cuestionario>> getShowPregunta(@PathVariable String pregunta){
+        return ResponseEntity.ok(icuestionario.findByPregunta(pregunta));
+    }
+    @GetMapping("/informe/{pyme}")
+    public ResponseEntity<List<?>> getShowPregunta(@PathVariable Integer pyme){
+        return ResponseEntity.ok(icuestionario.findByIdPreguntaPyme(pyme));
+    }
+    @GetMapping("/reporte/{pyme}")
+    public ResponseEntity<List<?>> getCuestionarioReporte(@PathVariable Integer pyme){
+        return ResponseEntity.ok(icuestionario.findByIdPymeReporte(pyme));
+    }
+
     @PostMapping("/")
     public ResponseEntity<Cuestionario> createCuestionario(@RequestBody Cuestionario cuestionario){
-
-        Cuestionario cuestFind = icuestionario.findByIdPregunta(cuestionario.getPyme_idpyme(),cuestionario.getPregunta_idpregunta());
-//        rafEstimacionService.findOne(rafEstimacion.getNmid());
+        log.info("HERE!!!!!_::::: "+cuestionario);
+        Cuestionario cuestFind = icuestionario.findByIdPreguntaPyme( Integer.valueOf(cuestionario.getMype_idmype()),Integer.valueOf(cuestionario.getPregunta_idpregunta()));
+        log.info("HERE!!!!!_::::: "+cuestFind);
         if(cuestFind != null){
-            return ResponseEntity.notFound().build();
+            cuestFind.setMype_idmype(cuestionario.getMype_idmype());
+            cuestFind.setPregunta_idpregunta(cuestionario.getPregunta_idpregunta());
+            cuestFind.setPPRespuestas(cuestionario.getPPRespuestas());
+            cuestFind.setPPNotas(cuestionario.getPPNotas());
+            cuestFind.setPPObservaciones(cuestionario.getPPObservaciones());
+            return ResponseEntity.ok(icuestionario.save(cuestFind));
         }
-//        Cuestionario result = icuestionario.save(cuestionario);
+//        return ResponseEntity.ok(null);
         return ResponseEntity.ok(icuestionario.save(cuestionario));
     }
 
@@ -48,7 +69,7 @@ public class CuestionarioController {
         if(cuestionarioActual == null){
             return ResponseEntity.notFound().build();
         }
-        cuestionarioActual.setPyme_idpyme(cuestionario.getPyme_idpyme());
+        cuestionarioActual.setMype_idmype(cuestionario.getMype_idmype());
         cuestionarioActual.setPregunta_idpregunta(cuestionario.getPregunta_idpregunta());
         cuestionarioActual.setPPRespuestas(cuestionario.getPPRespuestas());
         cuestionarioActual.setPPNotas(cuestionario.getPPNotas());

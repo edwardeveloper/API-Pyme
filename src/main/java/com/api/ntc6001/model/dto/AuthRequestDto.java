@@ -4,6 +4,6 @@ import lombok.Data;
 
 @Data
 public class AuthRequestDto {
-    String user;
+    String correo;
     String password;
 }

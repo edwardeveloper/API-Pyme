@@ -43,7 +43,6 @@ public class UsersController {
         usersActual.setUEstado(users.getUEstado());
         usersActual.setUTelefono(users.getUTelefono());
         usersActual.setUFechaCreacion(users.getUFechaCreacion());
-        usersActual.setUToken(users.getUToken());
         return ResponseEntity.ok(iUser.save(usersActual));
     }
 }

@@ -3,13 +3,12 @@ package com.api.ntc6001.service.impl;
 import com.api.ntc6001.dao.PreguntasDao;
 import com.api.ntc6001.model.entity.Preguntas;
 import com.api.ntc6001.service.IPreguntas;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -19,9 +18,9 @@ public class IPreguntasImpl implements IPreguntas {
     @Autowired
     private PreguntasDao preguntasDao;
 
-//    public IPreguntasImpl(PreguntasDao preguntasDao) {
-//        this.preguntasDao = preguntasDao;
-//    }
+    public IPreguntasImpl(PreguntasDao preguntasDao) {
+        this.preguntasDao = preguntasDao;
+    }
 
     @Override
     public Preguntas save(Preguntas pregunta) {
@@ -39,7 +38,13 @@ public class IPreguntasImpl implements IPreguntas {
     }
 
     @Override
-    public List<Preguntas> getPregunta() {
-        return null;
+    public Iterable<Preguntas> getPregunta() {
+        return preguntasDao.findAll();
     }
+
+    @Override
+    public List<Preguntas> getPreguntaByCapitulo(String capitulo) {
+        return preguntasDao.findByCapitulo(capitulo);
+    }
+
 }

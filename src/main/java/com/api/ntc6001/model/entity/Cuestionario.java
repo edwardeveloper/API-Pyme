@@ -22,8 +22,8 @@ public class Cuestionario implements Serializable {
     @Column(name="cuestionarioid")
     private Integer cuestionarioid;
 
-    @Column(name="pyme_idpyme")
-    private Integer pyme_idpyme;
+    @Column(name="mype_idmype")
+    private Integer mype_idmype;
 
     @Column(name="pregunta_idpregunta")
     private Integer pregunta_idpregunta;

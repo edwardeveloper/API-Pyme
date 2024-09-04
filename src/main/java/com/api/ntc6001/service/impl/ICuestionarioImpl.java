@@ -1,6 +1,7 @@
 package com.api.ntc6001.service.impl;
 
 import com.api.ntc6001.dao.CuestionarioDao;
+import com.api.ntc6001.model.dto.CuestionarioInformeTotalDto;
 import com.api.ntc6001.model.entity.Cuestionario;
 import com.api.ntc6001.service.ICuestionario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,8 +34,23 @@ public class ICuestionarioImpl implements ICuestionario {
     }
 
     @Override
-    public Cuestionario findByIdPregunta(Integer pyme, Integer pregunta) {
-        return cuestionarioDao.findByPregunta(pyme, pregunta);
+    public List<Cuestionario> findByPregunta(String pregunta) {
+        return cuestionarioDao.findByPreguntaId(pregunta);
+    }
+
+    @Override
+    public Cuestionario findByIdPreguntaPyme(Integer pyme, Integer pregunta) {
+        return cuestionarioDao.findByPreguntaPyme(pyme, pregunta);
+    }
+
+    @Override
+    public List<?> findByIdPreguntaPyme(Integer pyme) {
+        return cuestionarioDao.findByCapituloPyme(pyme);
+    }
+
+    @Override
+    public List<?> findByIdPymeReporte(Integer pyme) {
+        return cuestionarioDao.findByPymeReporte(pyme);
     }
 
     @Override

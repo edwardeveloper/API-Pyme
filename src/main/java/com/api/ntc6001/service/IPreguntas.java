@@ -11,5 +11,7 @@ public interface IPreguntas{
 
     void delete(Preguntas pregunta);
 
-    List<Preguntas> getPregunta();
+    Iterable<Preguntas> getPregunta();
+
+    List<Preguntas> getPreguntaByCapitulo(String capitulo);
 }

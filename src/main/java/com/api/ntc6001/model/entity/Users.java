@@ -59,14 +59,12 @@ public class Users implements Serializable {
     @Column(name="uestado")
     private String UEstado;
 //    @Enumerated(EnumType.STRING)
-//    @Column(name="urole")
+//    @Column(name="urol")
 //    private Role URole;
 
-    @Column(name="urole")
+    @Column(name="urol")
     private String URole;
 
-    @Column(name="utoken")
-    private String UToken;
 
 //    @Override
 //    public Collection<? extends GrantedAuthority> getAuthorities() {
