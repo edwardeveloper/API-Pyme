@@ -46,6 +46,16 @@ public class CuestionarioController {
         return ResponseEntity.ok(icuestionario.findByIdPymeReporte(pyme));
     }
 
+    @GetMapping("/reporteseccion/{pyme}")
+    public ResponseEntity<List<?>> getCuestionarioSeccionReporte(@PathVariable Integer pyme){
+        return ResponseEntity.ok(icuestionario.findSeccionReporte(pyme));
+    }
+
+    @GetMapping("/reporte/seccion/item/{pyme}")
+    public ResponseEntity<List<?>> getCuestionarioSeccionItemReporte(@PathVariable Integer pyme){
+        return ResponseEntity.ok(icuestionario.findSeccionItemReporte(pyme));
+    }
+
     @PostMapping("/")
     public ResponseEntity<Cuestionario> createCuestionario(@RequestBody Cuestionario cuestionario){
         log.info("HERE!!!!!_::::: "+cuestionario);

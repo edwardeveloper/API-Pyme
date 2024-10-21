@@ -125,6 +125,7 @@ public class AuthController {
             Mype mype = new Mype();
             mype.setMNit(registerUserRequestDto.getNit());
             mype.setMRazonSocial(registerUserRequestDto.getRazonsocial());
+            mype.setMDescripcionEmpresa(registerUserRequestDto.getDescripcionempresa());
             mype.setMDireccion(registerUserRequestDto.getDireccion());
             mype.setMCorreo(registerUserRequestDto.getCorreo());
             mype.setMTelefono(registerUserRequestDto.getTelefono());

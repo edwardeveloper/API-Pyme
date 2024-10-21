@@ -7,6 +7,8 @@ public class RegisterUserRequestDto {
 
     private String razonsocial;
 
+    private String descripcionempresa;
+
     private int nit;
 
     private String tipoempresa;

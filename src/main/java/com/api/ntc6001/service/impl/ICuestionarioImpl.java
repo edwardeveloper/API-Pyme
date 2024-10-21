@@ -54,6 +54,16 @@ public class ICuestionarioImpl implements ICuestionario {
     }
 
     @Override
+    public List<?> findSeccionReporte(Integer pyme) {
+        return cuestionarioDao.reportSeccion(pyme);
+    }
+
+    @Override
+    public List<?> findSeccionItemReporte(Integer pyme) {
+        return cuestionarioDao.reportItem(pyme);
+    }
+
+    @Override
     public void delete(Cuestionario cuestionario) {
 
     }

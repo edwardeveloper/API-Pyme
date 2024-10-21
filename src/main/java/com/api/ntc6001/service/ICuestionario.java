@@ -14,6 +14,8 @@ public interface ICuestionario{
     Cuestionario findByIdPreguntaPyme(Integer pyme, Integer pregunta);
     List<?> findByIdPreguntaPyme(Integer pyme);
     List<?> findByIdPymeReporte(Integer pyme);
+    List<?> findSeccionReporte(Integer pyme);
+    List<?> findSeccionItemReporte(Integer pyme);
 
     void delete(Cuestionario cuestionario);
 

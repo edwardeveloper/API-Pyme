@@ -25,6 +25,9 @@ public class Mype implements Serializable {
     @Column(name="mrazonsocial")
     private String MRazonSocial;
 
+    @Column(name="mdescripcionempresa")
+    private String MDescripcionEmpresa;
+
     @Column(name="mdireccion")
     private String MDireccion;
 

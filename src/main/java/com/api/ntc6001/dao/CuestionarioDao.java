@@ -26,4 +26,12 @@ public interface CuestionarioDao extends CrudRepository<Cuestionario, Integer> {
     @Query(value =  "SELECT p.PCapitulo as capitulo, COUNT(p.PPregunta) as countPregunta, COUNT(c.pregunta_idpregunta) as countCuestionario, SUM(CASE WHEN c.PPRespuestas = 'cumple' THEN 1 ELSE 0 END) AS cumple, SUM(CASE WHEN c.PPRespuestas = 'cumple parcialmente' THEN 1 ELSE 0 END) AS cumpleParcialmente,SUM(CASE WHEN c.PPRespuestas = 'no cumple' THEN 1 ELSE 0 END) AS noCumple FROM pregunta as p LEFT JOIN cuestionario as c ON c.pregunta_idpregunta=p.idpregunta AND c.mype_idmype= :mype GROUP BY p.PCapitulo",
             nativeQuery = true)
     List<?> findByPymeReporte(int mype);
+
+    @Query(value =  "SELECT p.PCapitulo as capitulo, UPPER(p.PSeccion) as seccion ,COUNT(p.PPregunta) as countPregunta, COUNT(c.pregunta_idpregunta) as countCuestionario, SUM(CASE WHEN c.PPRespuestas = 'cumple' THEN 1 ELSE 0 END) AS cumple, SUM(CASE WHEN c.PPRespuestas = 'cumple parcialmente' THEN 1 ELSE 0 END) AS cumpleParcialmente,SUM(CASE WHEN c.PPRespuestas = 'no cumple' THEN 1 ELSE 0 END) AS noCumple FROM pregunta as p LEFT JOIN cuestionario as c ON c.pregunta_idpregunta=p.idpregunta AND c.mype_idmype=:mype GROUP BY p.PSeccion order by p.PCapitulo",
+            nativeQuery = true)
+    List<?> reportSeccion(int mype);
+
+    @Query(value =  "SELECT p.PCapitulo as capitulo, UPPER(p.PSeccion) as seccion, p.PItem as item ,COUNT(p.PPregunta) as countPregunta, COUNT(c.pregunta_idpregunta) as countCuestionario, SUM(CASE WHEN c.PPRespuestas = 'cumple' THEN 1 ELSE 0 END) AS cumple, SUM(CASE WHEN c.PPRespuestas = 'cumple parcialmente' THEN 1 ELSE 0 END) AS cumpleParcialmente,SUM(CASE WHEN c.PPRespuestas = 'no cumple' THEN 1 ELSE 0 END) AS noCumple FROM pregunta as p LEFT JOIN cuestionario as c ON c.pregunta_idpregunta=p.idpregunta AND c.mype_idmype=:mype GROUP BY p.PItem order by p.PCapitulo",
+            nativeQuery = true)
+    List<?> reportItem(int mype);
 }
